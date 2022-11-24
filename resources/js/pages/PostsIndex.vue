@@ -40,21 +40,8 @@ export default {
                     console.log(e);
                 });
         },
-        showPost(id) {
-            // this.loading = true;
-            // axios.get('api/posts/' + id)
-            //     .then(response => {
-            //         if (response.data.status !== 200) {
-            //             this.detail = response.data.success ? response.data.results : undefined;
-            //         }
-
-            //         this.loading = false;
-            //     })
-            //     .catch(e => {
-            //         console.log('errore: ' + e);
-            //         this.loading = false;
-            //     })
-            console.log('hai cliccato: ' + id);
+        showPost(slug) {
+            this.$router.push('/posts/' + slug);
         }
     },
     mounted() {

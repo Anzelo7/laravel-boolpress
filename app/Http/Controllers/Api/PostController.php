@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -40,11 +41,13 @@ class PostController extends Controller
         //
     }
 
-    public function show(Post $post)
+    public function show($slug)
     {
+        $post = Post::where('slug', $slug)->with(['tags', 'category'])->first();
+
         $data = [
             'results' => $post,
-            'success' => true
+            'success' => isset($post)
         ];
 
         return response()->json($data);
